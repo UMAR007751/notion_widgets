@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #4955fc;
+      --secondary-color: #525efa;
+    }
+
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
+
+    .btn {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Manrope';
+      display: inline-block;
+      margin: 10px;
+      background-color: var(--secondary-color);
+      border-radius: 20px;
+      padding: 15px 30px;
+      font-size: 16px;
+      box-shadow: 0px 4px 0px var(--primary-color);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .btn.square {
+      border-radius: 0;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-color);
+    }
+
+    .btn:active {
+      box-shadow: 0 0;
+      background-color: var(--primary-color);
+    }
+
+    .input-field {
+      margin-bottom: 20px;
+    }
+
+    .input-field input[type="text"],
+    .input-field select {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .option-field {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .option-field label {
+      margin-right: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="input-field">
+    <input type="text" id="newButtonName" placeholder="Enter Button Name">
+    <input type="text" id="newButtonLink" placeholder="Enter Button Link">
+    <input type="color" id="newButtonColor" value="#525efa">
+    <input type="text" id="newButtonIcon" placeholder="Enter Button Icon URL">
+    <select id="newButtonSize">
+      <option value="rounded">Rounded</option>
+      <option value="square">Square</option>
+    </select>
+    <button class="btn" onclick="addNewButton()">Add Button</button>
+    <button class="btn" onclick="clearFields()">Clear</button>
+  </div>
+
+  <div id="buttonContainer"></div>
+
+  <script>
+    function addNewButton() {
+      var buttonName = document.getElementById("newButtonName").value;
+      var buttonLink = document.getElementById("newButtonLink").value;
+      var buttonColor = document.getElementById("newButtonColor").value;
+      var buttonIcon = document.getElementById("newButtonIcon").value;
+      var buttonSize = document.getElementById("newButtonSize").value;
+
+      if (buttonLink !== "") {
+        var newButton = document.createElement("button");
+        newButton.className = "btn";
+        newButton.style.backgroundColor = buttonColor;
+
+        if (buttonSize === "square") {
+          newButton.classList.add("square");
+        }
+
+        if (buttonIcon !== "") {
+          var imageElement = document.createElement("img");
+          imageElement.src = buttonIcon;
+          imageElement.style.height = "20px";
+          imageElement.style.width = "20px";
+          imageElement.style.marginRight = "5px";
+          newButton.appendChild(imageElement);
+        }
+
+        if (buttonName !== "") {
+          newButton.textContent = buttonName;
+        }
+
+        newButton.addEventListener("click", function () {
+          navigate(buttonLink);
+        });
+
+        document.getElementById("buttonContainer").appendChild(newButton);
+      }
+    }
+
+    function navigate(link) {
+      window.open(link, "_blank");
+    }
+
+    function clearFields() {
+      document.getElementById("newButtonName").value = "";
+      document.getElementById("newButtonLink").value = "";
+      document.getElementById("newButtonColor").value = "#525efa";
+      document.getElementById("newButtonIcon").value = "";
+      document.getElementById("newButtonSize").value = "rounded";
+    }
+  </script>
+
+</body>
+
+</html>
