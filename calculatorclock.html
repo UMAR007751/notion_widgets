@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator with Analogue Clock</title>
+</head>
+<body>
+<div id="calculator">
+<h1>Calculator</h1>
+<input type="text" id="display" />
+<input type="button" value="+" />
+<input type="button" value="-" />
+<input type="button" value="*" />
+<input type="button" value="/" />
+<input type="button" value="=" />
+<input type="button" value="C" />
+</div>
+<div id="clock">
+<h1>Analogue Clock</h1>
+<canvas id="canvas" width="200" height="200"></canvas>
+</div>
+<script>
+var display = document.getElementById("display");
+var clock = document.getElementById("clock");
+var canvas = document.getElementById("canvas");
+
+function updateDisplay(value) {
+display.value = value;
+}
+
+function updateClock() {
+var ctx = canvas.getContext("2d");
+var now = new Date();
+var hour = now.getHours();
+var minute = now.getMinutes();
+var second = now.getSeconds();
+
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = "black";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+ctx.fillStyle = "white";
+ctx.beginPath();
+ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 4, 0, 2 * Math.PI);
+ctx.fill();
+
+// Set the clock to 12 hours
+if (hour > 12) {
+hour -= 12;
+}
+
+ctx.fillStyle = "red";
+ctx.beginPath();
+ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 8, hour * (2 * Math.PI) / 12, (hour + minute / 60) * (2 * Math.PI) / 12);
+ctx.fill();
+
+ctx.fillStyle = "blue";
+ctx.beginPath();
+ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 12, minute * (2 * Math.PI) / 60, (minute + second / 60) * (2 * Math.PI) / 60);
+ctx.fill();
+}
+
+setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
