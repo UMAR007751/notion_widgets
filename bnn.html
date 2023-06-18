@@ -38,6 +38,10 @@
       outline: inherit;
     }
 
+    i {
+      padding-right: 2px;
+    }
+
     .btn {
       text-align: center;
       color: #ffffff;
@@ -57,7 +61,7 @@
 
     .btn.threeD:active {
       box-shadow: 0 0;
-      background-color: #1ce852;
+      background-color: var(--my-color-accent);
     }
 
     .rounded {
@@ -84,11 +88,11 @@
 
 <body>
 
-  <button class="btn large rounded threeD" type="button" onclick="navigate()">Passwords</button>
+  <button class="btn large rounded threeD" type="button" onclick="navigate()"> <i class="fa-regular fa-star"></i> Passwords</button>
 
   <script>
     function navigate() {
-      window.open("https://www.notion.so/523148d9075546da8dbdbc89aa126389?v=69b8238cc6a1407d8322068af9f98444&pvs=4", '_self');
+      window.open("https://www.notion.so/523148d9075546da8dbdbc89aa126389?v=69b8238cc6a1407d8322068af9f98444&pvs=4", '_blank');
     }
   </script>
 
