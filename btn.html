@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
   <style>
     :root {
       --my-color-accent: #4955fc;
-      --my-color-accent: #525efa;
+      --my-color: #525efa;
       --black: #3c3c3c;
       --black-accent: #2d2d2d;
       --blue: #809bce;
@@ -48,19 +49,20 @@
       font-family: 'Manrope';
       display: inline-block;
       margin: 10px;
-    }
-
-    .my-color {
       background-color: var(--my-color);
     }
 
-    .my-color.threeD {
+    .btn:hover {
+      background-color: var(--my-color-accent);
+    }
+
+    .btn.threeD {
       box-shadow: 0px 4px 0px var(--my-color-accent);
     }
 
-    .my-color.threeD:active {
+    .btn.threeD:active {
       box-shadow: 0 0;
-      background-color: var(--my-color-accent);
+      background-color: #1ce852;
     }
 
     .rounded {
@@ -86,15 +88,15 @@
 </head>
 
 <body>
-  <button class="btn large my-color rounded threeD" type="button" onclick="navigate()">
-    <i class="far fa-star"></i> Passwords
-  </button>
+
+  <button class="btn large rounded threeD" type="button" onclick="navigate()"><i class="fa-regular fa-star"></i>Passwords</button>
 
   <script>
     function navigate() {
-      window.location.href = "https://www.notion.so/523148d9075546da8dbdbc89aa126389?v=69b8238cc6a1407d8322068af9f98444&pvs=4";
+      window.open("https://www.notion.so/523148d9075546da8dbdbc89aa126389?v=69b8238cc6a1407d8322068af9f98444&pvs=4", '_self');
     }
   </script>
+
 </body>
 
 </html>
