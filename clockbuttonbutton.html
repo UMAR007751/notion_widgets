@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  <style>
+    :root {
+      --my-color-accent: #4955fc;
+      --my-color: #525efa;
+      --black: #3c3c3c;
+      --black-accent: #2d2d2d;
+      --blue: #809bce;
+      --blue-accent: #5c6f94;
+      --purple: #8a508f;
+      --purple-accent: #5d3661;
+      --mint: #b8e0d4;
+      --mint-accent: #8ba89f;
+      --pink: #eac4d5;
+      --pink-accent: #b495a3;
+      --green: #74a892;
+      --green-accent: #5e8675;
+      --red: #88fc03;
+      --red-accent: #94fc03;
+      --orange: #d35400;
+      --orange-accent: #9e4102;
+      --yellow: #f1c40f;
+      --yellow-accent: #bd9a0c;
+    }
+
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
+
+    .btn {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Manrope';
+      display: inline-block;
+      margin: 10px;
+      background-color: var(--my-color);
+      border-radius: 20px;
+    }
+
+    .btn.square {
+      border-radius: 0;
+    }
+
+    .btn:hover {
+      background-color: var(--my-color-accent);
+    }
+
+    .btn.threeD {
+      box-shadow: 0px 4px 0px var(--my-color-accent);
+    }
+
+    .btn.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--my-color-accent);
+    }
+
+    .small {
+      padding: 5px 20px;
+      font-size: 10px;
+    }
+
+    .mid {
+      padding: 10px 40px;
+      font-size: 12px;
+    }
+
+    .large {
+      padding: 15px 60px;
+      font-size: 18px;
+    }
+
+    .input-field {
+      margin-bottom: 10px;
+    }
+
+    .border-line {
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .clock-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .background-color-field {
+      margin-bottom: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- First border line section -->
+  <div class="border-line">
+    <div class="background-color-field">
+      <label for="backgroundColor1">Background Color:</label>
+      <input type="color" id="backgroundColor1" onchange="changeBackgroundColor(1)" value="#ffffff">
+    </div>
+
+    <div class="input-field">
+      <input type="text" id="newButtonName1" placeholder="Enter Button Name">
+      <input type="text" id="newButtonLink1" placeholder="Enter Button Link">
+      <input type="color" id="newButtonColor1" value="#525efa">
+      <input type="text" id="newButtonIcon1" placeholder="Enter Button Icon URL">
+      <select id="newButtonSize1">
+        <option value="rounded">Rounded</option>
+        <option value="square">Square</option>
+      </select>
+      <button class="btn large threeD" type="button" onclick="addNewButton(1)">Add Button</button>
+      <button class="btn small threeD" type="button" onclick="clearFields(1)">Clear</button>
+    </div>
+
+    <div id="buttonContainer1"></div>
+  </div>
+
+  <!-- Second border line section -->
+  <div class="border-line">
+    <div class="background-color-field">
+      <label for="backgroundColor2">Background Color:</label>
+      <input type="color" id="backgroundColor2" onchange="changeBackgroundColor(2)" value="#ffffff">
+    </div>
+
+    <div class="input-field">
+      <input type="text" id="newButtonName2" placeholder="Enter Button Name">
+      <input type="text" id="newButtonLink2" placeholder="Enter Button Link">
+      <input type="color" id="newButtonColor2" value="#525efa">
+      <input type="text" id="newButtonIcon2" placeholder="Enter Button Icon URL">
+      <select id="newButtonSize2">
+        <option value="rounded">Rounded</option>
+        <option value="square">Square</option>
+      </select>
+      <button class="btn large threeD" type="button" onclick="addNewButton(2)">Add Button</button>
+      <button class="btn small threeD" type="button" onclick="clearFields(2)">Clear</button>
+    </div>
+
+    <div id="buttonContainer2"></div>
+  </div>
+
+  <!-- Clock section -->
+  <div class="clock-container">
+    <script src="https://cdn.logwork.com/widget/clock.js"></script>
+    <a href="https://logwork.com/current-time-in-lahore-pakistan-punjab" class="clock-time" data-style="black-white"
+      data-size="250" data-timezone="Asia/Karachi">Current time in Lahore, Pakistan</a>
+  </div>
+
+  <script>
+    // JavaScript code for adding new buttons to a specific border line section
+    function addNewButton(section) {
+      var buttonName = document.getElementById("newButtonName" + section).value;
+      var buttonLink = document.getElementById("newButtonLink" + section).value;
+      var buttonColor = document.getElementById("newButtonColor" + section).value;
+      var buttonIcon = document.getElementById("newButtonIcon" + section).value;
+      var buttonSize = document.getElementById("newButtonSize" + section).value;
+      var buttonContainer = document.getElementById("buttonContainer" + section);
+
+      if (buttonLink !== "") {
+        var newButton = document.createElement("button");
+        newButton.className = "btn large threeD";
+        newButton.style.backgroundColor = buttonColor;
+
+        if (buttonSize === "square") {
+          newButton.classList.add("square");
+        } else {
+          newButton.classList.remove("square");
+        }
+
+        if (buttonIcon !== "") {
+          var imageElement = document.createElement("img");
+          imageElement.src = buttonIcon;
+          imageElement.style.height = "20px";
+          imageElement.style.width = "20px";
+          imageElement.style.marginRight = "5px";
+          newButton.appendChild(imageElement);
+        }
+
+        if (buttonName !== "") {
+          newButton.textContent = buttonName;
+        }
+
+        newButton.addEventListener("click", function () {
+          navigate(buttonLink);
+        });
+
+        buttonContainer.appendChild(newButton);
+      }
+    }
+
+    // JavaScript code for navigating to a specific link
+    function navigate(link) {
+      window.open(link, "_blank");
+    }
+
+    // JavaScript code for clearing the input fields in a specific border line section
+    function clearFields(section) {
+      document.getElementById("newButtonName" + section).value = "";
+      document.getElementById("newButtonLink" + section).value = "";
+      document.getElementById("newButtonColor" + section).value = "#525efa";
+      document.getElementById("newButtonIcon" + section).value = "";
+      document.getElementById("newButtonSize" + section).value = "rounded";
+    }
+
+    // JavaScript code for changing the background color of a specific border line section
+    function changeBackgroundColor(section) {
+      var backgroundColorField = document.getElementById("backgroundColor" + section);
+      var borderLine = document.getElementsByClassName("border-line")[section - 1];
+
+      borderLine.style.backgroundColor = backgroundColorField.value;
+    }
+  </script>
+
+</body>
+
+</html>
