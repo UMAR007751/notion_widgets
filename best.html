@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  <style>
+    :root {
+      --my-color-accent: #4955fc;
+      --my-color: #525efa;
+      --black: #3c3c3c;
+      --black-accent: #2d2d2d;
+      --blue: #809bce;
+      --blue-accent: #5c6f94;
+      --purple: #8a508f;
+      --purple-accent: #5d3661;
+      --mint: #b8e0d4;
+      --mint-accent: #8ba89f;
+      --pink: #eac4d5;
+      --pink-accent: #b495a3;
+      --green: #74a892;
+      --green-accent: #5e8675;
+      --red: #88fc03;
+      --red-accent: #94fc03;
+      --orange: #d35400;
+      --orange-accent: #9e4102;
+      --yellow: #f1c40f;
+      --yellow-accent: #bd9a0c;
+    }
+
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
+
+    .btn {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Manrope';
+      display: inline-block;
+      margin: 10px;
+      background-color: var(--my-color);
+      border-radius: 20px;
+    }
+
+    .btn.square {
+      border-radius: 0;
+    }
+
+    .btn:hover {
+      background-color: var(--my-color-accent);
+    }
+
+    .btn.threeD {
+      box-shadow: 0px 4px 0px var(--my-color-accent);
+    }
+
+    .btn.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--my-color-accent);
+    }
+
+    .small {
+      padding: 5px 20px;
+      font-size: 10px;
+    }
+
+    .mid {
+      padding: 10px 40px;
+      font-size: 12px;
+    }
+
+    .large {
+      padding: 15px 60px;
+      font-size: 18px;
+    }
+
+    .input-field {
+      margin-bottom: 10px;
+    }
+
+    /* New styles for clock, border, and background */
+    .clock-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    #buttonContainer {
+      margin-top: 50px;
+    }
+
+    /* Border styles */
+    .border-line {
+      border: 5px solid var(--border-color, #000000);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    /* Background styles */
+    body {
+      background-color: var(--background-color, #ffffff);
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Clock from https://cdn.logwork.com/widget/clock.js -->
+  <script src="https://cdn.logwork.com/widget/clock.js"></script>
+  <a href="https://logwork.com/current-time-in-lahore-pakistan-punjab" class="clock-time" data-style="black-white" data-size="250" data-timezone="Asia/Karachi">Current time in Lahore, Pakistan</a>
+
+  <!-- Updated border line and button form -->
+  <div class="border-line">
+    <div class="input-field">
+      <input type="text" id="newButtonName" placeholder="Enter Button Name">
+      <input type="text" id="newButtonLink" placeholder="Enter Button Link">
+      <input type="color" id="newButtonColor" value="#525efa">
+      <input type="text" id="newButtonIcon" placeholder="Enter Button Icon URL">
+      <select id="newButtonSize">
+        <option value="rounded">Rounded</option>
+        <option value="square">Square</option>
+      </select>
+      <button class="btn large threeD" type="button" onclick="addNewButton()">Add Button</button>
+      <button class="btn small threeD" type="button" onclick="clearFields()">Clear</button>
+    </div>
+
+    <div id="buttonContainer"></div>
+  </div>
+
+  <div class="clock-container">
+    <div id="clock"></div>
+  </div>
+
+  <script>
+    // JavaScript code for clock
+    function updateClock() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      var timeString = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+      document.getElementById("clock").textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+
+    function addNewButton() {
+      var buttonName = document.getElementById("newButtonName").value;
+      var buttonLink = document.getElementById("newButtonLink").value;
+      var buttonColor = document.getElementById("newButtonColor").value;
+      var buttonIcon = document.getElementById("newButtonIcon").value;
+      var buttonSize = document.getElementById("newButtonSize").value;
+
+      if (buttonLink !== "") {
+        var newButton = document.createElement("button");
+        newButton.className = "btn large threeD";
+        newButton.style.backgroundColor = buttonColor;
+
+        if (buttonSize === "square") {
+          newButton.classList.add("square");
+        } else {
+          newButton.classList.remove("square");
+        }
+
+        if (buttonIcon !== "") {
+          var imageElement = document.createElement("img");
+          imageElement.src = buttonIcon;
+          imageElement.style.height = "20px";
+          imageElement.style.width = "20px";
+          imageElement.style.marginRight = "5px";
+          newButton.appendChild(imageElement);
+        }
+
+        if (buttonName !== "") {
+          newButton.textContent = buttonName;
+        }
+
+        newButton.addEventListener("click", function () {
+          navigate(buttonLink);
+        });
+
+        document.getElementById("buttonContainer").appendChild(newButton);
+      }
+    }
+
+    function navigate(link) {
+      window.open(link, "_blank");
+    }
+
+    function clearFields() {
+      document.getElementById("newButtonName").value = "";
+      document.getElementById("newButtonLink").value = "";
+      document.getElementById("newButtonColor").value = "#525efa";
+      document.getElementById("newButtonIcon").value = "";
+      document.getElementById("newButtonSize").value = "rounded";
+    }
+
+    // JavaScript code for changing background color
+    function changeBackgroundColor() {
+      var backgroundColor = document.getElementById("backgroundColor").value;
+      document.documentElement.style.setProperty("--background-color", backgroundColor);
+    }
+
+    // JavaScript code for changing border color
+    function changeBorderColor() {
+      var borderColor = document.getElementById("borderColor").value;
+      document.documentElement.style.setProperty("--border-color", borderColor);
+    }
+  </script>
+
+  <!-- Additional form for color customization -->
+  <div class="input-field">
+    <label for="backgroundColor">Background Color:</label>
+    <input type="color" id="backgroundColor" onchange="changeBackgroundColor()" value="#ffffff">
+  </div>
+
+  <div class="input-field">
+    <label for="borderColor">Border Color:</label>
+    <input type="color" id="borderColor" onchange="changeBorderColor()" value="#000000">
+  </div>
+
+</body>
+
+</html>
