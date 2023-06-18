@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  <style>
+    :root {
+      --my-color-accent: #4955fc;
+      --my-color: #525efa;
+      --black: #3c3c3c;
+      --black-accent: #2d2d2d;
+      --blue: #809bce;
+      --blue-accent: #5c6f94;
+      --purple: #8a508f;
+      --purple-accent: #5d3661;
+      --mint: #b8e0d4;
+      --mint-accent: #8ba89f;
+      --pink: #eac4d5;
+      --pink-accent: #b495a3;
+      --green: #74a892;
+      --green-accent: #5e8675;
+      --red: #88fc03;
+      --red-accent: #94fc03;
+      --orange: #d35400;
+      --orange-accent: #9e4102;
+      --yellow: #f1c40f;
+      --yellow-accent: #bd9a0c;
+    }
+
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
+
+    .btn {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Manrope';
+      display: inline-block;
+      margin: 10px;
+      background-color: var(--my-color);
+    }
+
+    .btn:hover {
+      background-color: var(--my-color-accent);
+    }
+
+    .btn.threeD {
+      box-shadow: 0px 4px 0px var(--my-color-accent);
+    }
+
+    .btn.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--my-color-accent);
+    }
+
+    .rounded {
+      border-radius: 20px;
+    }
+
+    .small {
+      padding: 5px 20px;
+      font-size: 10px;
+    }
+
+    .mid {
+      padding: 10px 40px;
+      font-size: 12px;
+    }
+
+    .large {
+      padding: 15px 60px;
+      font-size: 18px;
+    }
+
+    .input-field {
+      margin-bottom: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="input-field">
+    <input type="text" id="newButtonName" placeholder="Enter Button Name">
+    <input type="text" id="newButtonLink" placeholder="Enter Button Link">
+    <input type="color" id="newButtonColor" value="#525efa">
+    <input type="text" id="newButtonFont" placeholder="Enter Button Font (e.g., Arial)">
+    <input type="text" id="newButtonIcon" placeholder="Enter Button Icon URL">
+    <button class="btn large rounded threeD" type="button" onclick="addNewButton()">Add Button</button>
+  </div>
+
+  <div id="buttonContainer"></div>
+
+  <script>
+    function addNewButton() {
+      var buttonName = document.getElementById("newButtonName").value;
+      var buttonLink = document.getElementById("newButtonLink").value;
+      var buttonColor = document.getElementById("newButtonColor").value;
+      var buttonFont = document.getElementById("newButtonFont").value;
+      var buttonIcon = document.getElementById("newButtonIcon").value;
+
+      if (buttonName !== "" && buttonLink !== "") {
+        var newButton = document.createElement("button");
+        newButton.className = "btn large rounded threeD";
+        newButton.style.backgroundColor = buttonColor;
+        newButton.style.fontFamily = buttonFont;
+
+        if (buttonIcon !== "") {
+          var iconElement = document.createElement("i");
+          iconElement.className = "fas fa-image";
+          iconElement.style.marginRight = "5px";
+          newButton.appendChild(iconElement);
+
+          var imageElement = document.createElement("img");
+          imageElement.src = buttonIcon;
+          imageElement.style.height = "20px";
+          imageElement.style.width = "20px";
+          imageElement.style.marginRight = "5px";
+          newButton.appendChild(imageElement);
+        }
+
+        newButton.textContent = buttonName;
+        newButton.addEventListener("click", function () {
+          navigate(buttonLink);
+        });
+
+        document.getElementById("buttonContainer").appendChild(newButton);
+      }
+    }
+
+    function navigate(link) {
+      window.open(link, "_blank");
+    }
+  </script>
+
+</body>
+
+</html>
