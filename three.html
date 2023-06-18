@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  <style>
+    :root {
+      --my-color-accent: #4955fc;
+      --my-color: #525efa;
+      --black: #3c3c3c;
+      --black-accent: #2d2d2d;
+      --blue: #809bce;
+      --blue-accent: #5c6f94;
+      --purple: #8a508f;
+      --purple-accent: #5d3661;
+      --mint: #b8e0d4;
+      --mint-accent: #8ba89f;
+      --pink: #eac4d5;
+      --pink-accent: #b495a3;
+      --green: #74a892;
+      --green-accent: #5e8675;
+      --red: #88fc03;
+      --red-accent: #94fc03;
+      --orange: #d35400;
+      --orange-accent: #9e4102;
+      --yellow: #f1c40f;
+      --yellow-accent: #bd9a0c;
+    }
+
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
+
+    .btn {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Manrope';
+      display: inline-block;
+      margin: 10px;
+      background-color: var(--my-color);
+    }
+
+    .btn:hover {
+      background-color: var(--my-color-accent);
+    }
+
+    .btn.threeD {
+      box-shadow: 0px 4px 0px var(--my-color-accent);
+    }
+
+    .btn.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--my-color-accent);
+    }
+
+    .rounded {
+      border-radius: 20px;
+    }
+
+    .small {
+      padding: 5px 20px;
+      font-size: 10px;
+    }
+
+    .mid {
+      padding: 10px 40px;
+      font-size: 12px;
+    }
+
+    .large {
+      padding: 15px 60px;
+      font-size: 18px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <button class="btn large rounded threeD" type="button" onclick="navigatePasswords()">Passwords</button>
+  <button class="btn large rounded threeD" type="button" onclick="navigateDashboard()">Dashboard</button>
+  <button class="btn large rounded threeD" type="button" onclick="navigateLifeOS()">Life OS</button>
+  <button class="btn large rounded threeD" type="button" onclick="navigateAllGallery()">All Gallery</button>
+  <button class="btn large rounded threeD" type="button" onclick="addNewButton()">Add Button</button>
+
+  <script>
+    function navigatePasswords() {
+      window.open("https://www.notion.so/523148d9075546da8dbdbc89aa126389?v=69b8238cc6a1407d8322068af9f98444&pvs=4", '_blank');
+    }
+
+    function navigateDashboard() {
+      window.open("https://www.notion.so/Quick-Note-ed6496ef68d344739d25201764f3ec48?pvs=4", '_blank');
+    }
+
+    function navigateLifeOS() {
+      window.open("https://www.notion.so/42b321c14ab14d67b79bed08958a218a?v=be6bddb3d1c042fbabf507d3164b27c1&pvs=4", '_blank');
+    }
+
+    function navigateAllGallery() {
+      window.open("https://www.notion.so/Personal-Home-0f794c6d61c9489cb3cab40262d2d117?pvs=4", '_blank');
+    }
+
+    function addNewButton() {
+      var newButton = document.createElement("button");
+      newButton.classList.add("btn", "large", "rounded", "threeD");
+      newButton.textContent = "New Button";
+      newButton.setAttribute("onclick", "navigateNewButton()");
+      document.body.appendChild(newButton);
+    }
+
+    function navigateNewButton() {
+      window.alert("This is a new button!");
+    }
+  </script>
+
+</body>
+
+</html>
