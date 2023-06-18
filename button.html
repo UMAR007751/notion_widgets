@@ -2,28 +2,256 @@
 <html lang="en">
 
 <head>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
   <style>
     :root {
-      --my-color: skyblue;
-      /* Rest of the color variables omitted for brevity */
+      --my-color-accent;#49cdfc;
+      --my-color-accent:#49e8fc;
+      --black: #3c3c3c;
+      --black-accent: #2d2d2d;
+      --blue: #809bce;
+      --blue-accent: #5c6f94;
+      --purple: #8a508f;
+      --purple-accent: #5d3661;
+      --mint: #b8e0d4;
+      --mint-accent: #8ba89f;
+      --pink: #eac4d5;
+      --pink-accent: #b495a3;
+      --green: #74a892;
+      --green-accent: #5e8675;
+      --red:#d74a49;
+      --red-accent:#b53f3f;
+      --orange:#d35400;
+      --orange-accent:#9e4102;
+      --yellow:#f1c40f;
+      --yellow-accent:#bd9a0c;
     }
 
-    /* Other CSS styles omitted for brevity */
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
+
+    i {
+      padding-right: 2px;
+    }
+
+    .btn {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Manrope';
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .my-color {
+      background-color: var(--my-color);
+    }
+
+    .my-color:hover {
+      background-color: var(--my-color-accent);
+    }
+
+    .my-color.threeD {
+      box-shadow: 0px 4px 0px var(--my-color-accent);
+    }
+
+    .my-color.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--my-color-accent);
+    }
+    .black {
+      background-color: var(--black);
+    }
+
+    .black:hover {
+      background-color: var(--black-accent);
+    }
+
+    .black.threeD {
+      box-shadow: 0px 4px 0px var(--black-accent);
+    }
+
+    .black.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--black-accent);
+    }
+
+    .blue {
+      background-color: var(--blue);
+    }
+
+    .blue:hover {
+      background-color: var(--blue-accent);
+    }
+
+    .blue.threeD {
+      box-shadow: 0px 4px 0px var(--blue-accent);
+    }
+
+    .blue.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--blue-accent);
+    }
+
+    .purple {
+      background-color: var(--purple);
+    }
+
+    .purple:hover {
+      background-color: var(--purple-accent);
+    }
+
+    .purple.threeD {
+      box-shadow: 0px 4px 0px var(--purple-accent);
+    }
+
+    .purple.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--purple-accent);
+    }
+
+    .mint {
+      background-color: var(--mint);
+    }
+
+    .mint:hover {
+      background-color: var(--mint-accent);
+    }
+
+    .mint.threeD {
+      box-shadow: 0px 4px 0px var(--mint-accent);
+    }
+
+    .mint.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--mint-accent);
+    }
+
+    .pink {
+      background-color: var(--pink);
+    }
+
+    .pink:hover {
+      background-color: var(--pink-accent);
+    }
+
+    .pink.threeD {
+      box-shadow: 0px 4px 0px var(--pink-accent);
+    }
+
+    .pink.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--pink-accent);
+    }
+
+    .green {
+      background-color: var(--green);
+    }
+
+    .green:hover {
+      background-color: var(--green-accent);
+    }
+
+    .green.threeD {
+      box-shadow: 0px 4px 0px var(--green-accent);
+    }
+
+    .green.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--green-accent);
+    }
+
+    .red {
+      background-color: var(--red);
+    }
+
+    .red:hover {
+      background-color: var(--red-accent);
+    }
+
+    .red.threeD {
+      box-shadow: 0px 4px 0px var(--red-accent);
+    }
+
+    .red.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--red-accent);
+    }
+
+    .orange {
+      background-color: var(--orange);
+    }
+
+    .orange:hover {
+      background-color: var(--orange-accent);
+    }
+
+    .orange.threeD {
+      box-shadow: 0px 4px 0px var(--orange-accent);
+    }
+
+    .orange.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--orange-accent);
+    }
+
+    .yellow {
+      background-color: var(--yellow);
+    }
+
+    .yellow:hover {
+      background-color: var(--yellow-accent);
+    }
+
+    .yellow.threeD {
+      box-shadow: 0px 4px 0px var(--yellow-accent);
+    }
+
+    .yellow.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--yellow-accent);
+    }
+
+    .rounded {
+      border-radius: 20px;
+    }
+
+    .small {
+      padding: 5px 20px;
+      font-size: 10px;
+    }
+
+    .mid {
+      padding: 10px 40px;
+      font-size: 12px;
+    }
+
+    .large {
+      padding: 15px 60px;
+      font-size: 18px;
+    }
   </style>
+
 </head>
 
 <body>
-  <button class="btn large my-color rounded threeD" type="button" onclick="navigate()">
-    <img src="https://cdn-icons-png.flaticon.com/512/103/103089.png?w=740&t=st=1687089468~exp=1687090068~hmac=964c08fbae8e0b58468a62ca54de6d94322d108d48bb91971e6bfdbd04c75f09" alt="Icon" width="20">
-  </button>
 
+  <button class="btn large my-color rounded threeD" type="button" onclick="navigate()"> <i class="fa-regular fa-star"></i> Passwords</button>
+  
   <script>
     function navigate() {
-      window.open("notion://https://www.notion.so/aebc07d5fbb24477a19e54d23aa72a73?v=c45a5276fb1f420e8d2243db11bb162c&pvs=4");
+      window.open("https://www.notion.so/523148d9075546da8dbdbc89aa126389?v=69b8238cc6a1407d8322068af9f98444&pvs=4", '_blank').focus();
     }
   </script>
+
 </body>
 
 </html>
